@@ -1,4 +1,6 @@
 <?php
+defined('MOODLE_INTERNAL') || die();
+
 $string['pluginname'] = 'First Test block';
 $string['firsttest'] = 'First Test';
 $string['firsttest:addinstance'] = 'Add a new first Test block';

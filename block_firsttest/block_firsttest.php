@@ -1,4 +1,6 @@
 <?php
+defined('MOODLE_INTERNAL') || die();
+
 class block_firsttest extends block_base {
     public function init() {
         $this->title = get_string('firsttest', 'block_firsttest');
