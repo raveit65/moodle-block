@@ -27,8 +27,17 @@ class block_googlesearch extends block_base {
 
         $jsonResponse = file_get_contents('https://customsearch.googleapis.com/customsearch/v1?cx=fd58b2a4eb55453c2&num=10&q=Moodle%20Blocks&key='.$apiKey);
 
+        $jsonData = json_decode($jsonResponse);
+        $items = $jsonData->items;
+
+        $searchstring = 'Search Results for "Moodle Blocks": <br><br>';
+
+        foreach($items as $key=>$value){
+            $searchstring .= '<a href="' . $value->link . '">' . $value->link . '</a><br>';
+        }
+
         $this->content = new stdClass();
-        $this->content->text = 'Search results for "Moodle Blocks" as raw jason: <br><br>' . $jsonResponse;
+        $this->content->text = $searchstring;
 
         return $this->content;
     }
